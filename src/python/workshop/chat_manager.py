@@ -223,7 +223,6 @@ class ChatManager:
                 stream_task = asyncio.create_task(run_stream())
 
                 # Stream tokens as they arrive
-                tokens_processed = 0
                 try:
                     while True:
                         try:
@@ -238,8 +237,6 @@ class ChatManager:
                             )
                             if item is None:  # End of stream signal
                                 break
-
-                            tokens_processed += 1
 
                             # Yield response based on type
                             if isinstance(item, dict):
@@ -281,7 +278,6 @@ class ChatManager:
                     yield ChatResponse(content=f"</br>{incomplete_details.reason}")
 
                 yield ChatResponse(done=True)
-                logger.info("✅ Processed %d tokens successfully", tokens_processed)
 
             except Exception as e:
                 logger.error("❌ Processing chat message: %s", e)
