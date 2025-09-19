@@ -34,7 +34,7 @@ class Config:
 
         # Model parameters
         self._max_completion_tokens = 4 * 10240
-        self._max_prompt_tokens = 10 * 10240
+        self._max_prompt_tokens = 20 * 10240
         self._temperature = 0.1
         self._top_p = 0.1
 
