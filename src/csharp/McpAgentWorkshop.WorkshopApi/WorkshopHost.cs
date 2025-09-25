@@ -47,7 +47,9 @@ app.MapGet("/files/{*path}", async (string path, AgentService agentService) =>
     return fileInfo is not null ? TypedResults.File(fileInfo) : Results.NotFound();
 });
 
+await app.StartAsync();
+
 var agentService = app.Services.GetRequiredService<AgentService>();
 await agentService.InitialiseAgentAsync();
 
-app.Run();
+await app.WaitForShutdownAsync();

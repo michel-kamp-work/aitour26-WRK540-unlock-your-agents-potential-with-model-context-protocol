@@ -1,4 +1,5 @@
 using System.ClientModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Azure.AI.Agents.Persistent;
 using McpAgentWorkshop.WorkshopApi.Models;
@@ -18,6 +19,8 @@ public partial class AgentService(
 
     public async Task InitialiseAgentAsync()
     {
+        using var activity = Diagnostics.ActivitySource.StartActivity(name: "Zava Agent Initialization");
+
         logger.LogInformation("Creating new agent: {AgentName}", AgentName);
 
         var instructions = Path.Combine(sharedPath, "instructions", InstructionsFile);
@@ -82,7 +85,7 @@ public partial class AgentService(
             request.Message;
         var spanName = $"Zava Agent Chat Request: {messagePreview}";
 
-        using var activity = Diagnostics.ActivitySource.StartActivity(spanName);
+        using var activity = Diagnostics.ActivitySource.StartActivity(spanName, ActivityKind.Server);
 
         PersistentAgentThread sessionThread;
         AsyncCollectionResult<StreamingUpdate>? runStream = null;

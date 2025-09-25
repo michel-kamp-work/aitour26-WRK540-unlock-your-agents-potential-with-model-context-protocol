@@ -63,6 +63,7 @@ public static class Extensions
                     .AddHttpClientInstrumentation()
                     .AddRuntimeInstrumentation()
                     .AddMeter("Experimental.ModelContextProtocol")
+                    .AddMeter("McpAgentWorkshop.WorkshopApi")
                     .AddMeter("McpAgentWorkshop.McpServer")
                     .AddMeter("Experimental.Microsoft.Extensions.AI")
                     .AddMeter("Azure.AI.Agents.Persistent.PersistentAgentsClient");
@@ -80,6 +81,7 @@ public static class Extensions
                     //.AddGrpcClientInstrumentation()
                     .AddHttpClientInstrumentation()
                     .AddSource("Experimental.ModelContextProtocol")
+                    .AddSource("McpAgentWorkshop.WorkshopApi")
                     .AddSource("McpAgentWorkshop.McpServer")
                     .AddSource("Experimental.Microsoft.Extensions.AI")
                     .AddSource("Azure.AI.Agents.Persistent.PersistentAgentsClient");
