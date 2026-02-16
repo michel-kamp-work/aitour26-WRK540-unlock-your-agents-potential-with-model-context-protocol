@@ -36,7 +36,7 @@ Utilities.suppress_logs()
 
 # Agent Instructions
 INSTRUCTIONS_FILE = "instructions/mcp_server_tools_with_code_interpreter.txt"
-# INSTRUCTIONS_FILE = "instructions/mcp_server_tools_with_semantic_search.txt"
+INSTRUCTIONS_FILE = "instructions/mcp_server_tools_with_semantic_search.txt"
 
 RESPONSE_TIMEOUT_SECONDS = 60
 
